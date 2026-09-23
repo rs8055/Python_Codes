@@ -38,10 +38,17 @@ class Snake:
     def strike(self):
         if self.segments[0].xcor()>285 or self.segments[0].xcor()<-285 or self.segments[0].ycor()>285 or self.segments[0].ycor()<-285:
             return True
-        elif any(self.segments[0].position() == segment.position() for segment in self.segments[1:]):
+        elif any(self.segments[0].distance(segment)<10 for segment in self.segments[1:]):
             return True
         else:
             return False
+
+    def game_over(self):
+        over_turtle = Turtle()
+        over_turtle.hideturtle()
+        over_turtle.color("blue")
+        over_turtle.penup()
+        over_turtle.write(f"Game Over.", align="center", font=("Arial", 25, "normal"))
 
 
     def move_left(self):

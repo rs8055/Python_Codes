@@ -5,8 +5,8 @@ import time
 import scoreboard
 
 screen = Screen()
-screen.bgcolor("black")
 screen.setup(width=600, height=600)
+screen.bgcolor("black")
 screen.title("Snake Game")
 screen.tracer(0)
 
@@ -33,6 +33,7 @@ while game_is_on:
     sb.update_scoreboard()
     if my_snake.strike():
         game_is_on = False
+        my_snake.game_over()
 
 
 print(f"Game Over. Your score is {sb.score}.")
