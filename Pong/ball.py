@@ -11,6 +11,7 @@ class Ball(Turtle):
         self.setheading(random.randrange(0,360))
         self.xmove = 10
         self.ymove = 10
+        self.move_speed = 0.05
 
     def move(self):
         if self.ycor()>280 or self.ycor()<-275:

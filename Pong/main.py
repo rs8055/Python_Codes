@@ -25,9 +25,12 @@ screen.onkey(left_stick.move_down, "s")
 game_is_on = True
 while game_is_on:
     ball.move()
+    screen.update()
+    time.sleep(ball.move_speed)
 
     if (ball.distance(right_stick) < 50 and ball.xcor()>360) or (ball.distance(left_stick) < 50 and ball.xcor()<-360):
         ball.xmove *=-1
+        ball.move_speed *= 0.75
 
     if ball.xcor() > 370 or ball.xcor() < -370:
         if ball.xcor() > 370:
@@ -35,6 +38,7 @@ while game_is_on:
         else:
             score.score_right+=1
         ball.goto((0, 0))
+        ball.move_speed = 0.05
         ball.setheading(random.randrange(0, 360))
 
 
@@ -42,13 +46,10 @@ while game_is_on:
     if score.score_left >= 10 or score.score_right >= 10:
         game_is_on = False
 
-    screen.update()
-    time.sleep(0.05)
-
 writer = Turtle()
 writer.hideturtle()
 writer.color("white")
-writer.write("Game Over!", align="center", font=("Arial", 24, "bold"))
+writer.write("Game Over!", align="center",  font=("Arial", 24, "bold"))
 print(f"Final Score are: \nPlayer 1: {score.score_left}\nPlayer 2: {score.score_right}" )
 
 
