@@ -32,8 +32,8 @@ while game_is_on:
         food.refresh()
     sb.update_scoreboard()
     if my_snake.strike():
-        game_is_on = False
-        my_snake.game_over()
+        my_snake.reset()
+        sb.reset_score()
 
 
 print(f"Game Over. Your score is {sb.score}.")

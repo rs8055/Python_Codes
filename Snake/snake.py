@@ -43,12 +43,11 @@ class Snake:
         else:
             return False
 
-    def game_over(self):
-        over_turtle = Turtle()
-        over_turtle.hideturtle()
-        over_turtle.color("blue")
-        over_turtle.penup()
-        over_turtle.write(f"Game Over.", align="center", font=("Arial", 25, "normal"))
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000,1000)
+        self.segments.clear()
+        self.make_snake()
 
 
     def move_left(self):
